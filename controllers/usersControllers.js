@@ -1,4 +1,4 @@
-const { NODE_ENV, JWT_SECRET } = process.env;
+// const { NODE_ENV, JWT_SECRET } = process.env;
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userSchema')
@@ -84,7 +84,7 @@ const login = (req, res, next) => {
       if (!matched) {
         return Promise.reject(new AuthError('Неверные логин или пароль пользователя'));
       }
-      const token = jwt.sign({ _id: userId }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' }, { expiresIn: '7d' });
+      const token = jwt.sign({ _id: userId }, 'dev-secret', { expiresIn: '7d' }, { expiresIn: '7d' });
       return res
         .send({ token });
     })
