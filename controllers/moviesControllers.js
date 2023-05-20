@@ -1,8 +1,8 @@
 const Movie = require('../models/movieSchema');
 const NotFoundError = require('../utils/errors/NotFoundError');
 const BadRequestError = require('../utils/errors/BadRequestError');
-const ConflictError = require('../utils/errors/ConflictError');
-const AuthError = require('../utils/errors/AuthError');
+// const ConflictError = require('../utils/errors/ConflictError');
+// const AuthError = require('../utils/errors/AuthError');
 
 const getMovies = (req, res, next) => {
   Movie.find({})
