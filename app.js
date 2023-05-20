@@ -13,11 +13,11 @@ const {
   login,
 } = require('./controllers/usersControllers');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3000, DB_ADDRESS } = process.env;
 
 const app = express();
 app.use(cors());
-mongoose.connect('mongodb://127.0.0.1:27017/bitfilmsdb');
+mongoose.connect(DB_ADDRESS);
 
 app.use(bodyParser.json());
 
