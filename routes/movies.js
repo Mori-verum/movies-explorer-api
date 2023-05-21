@@ -4,7 +4,7 @@ const {
   getMovies,
   createMovie,
   deleteMovie,
- } = require('../controllers/moviesControllers');
+} = require('../controllers/moviesControllers');
 
 moviesRouter.get('/', getMovies);
 

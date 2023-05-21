@@ -3,9 +3,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
+const cors = require('cors');
 const errorHandler = require('./middlewares/errorHandler');
 const routes = require('./routes/index');
-const cors = require('cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { validateUserBody, validateLoginParameters } = require('./utils/validateRequestParameters');
 const {

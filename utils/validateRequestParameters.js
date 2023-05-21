@@ -47,61 +47,61 @@ const validateLoginParameters = celebrate({
 const validateMovieBody = celebrate({
   body: Joi.object().keys({
     country: Joi.string()
-    .required()
-    .messages({
-      'string.empty': 'Поле "country" должно быть заполнено',
-    }),
+      .required()
+      .messages({
+        'string.empty': 'Поле "country" должно быть заполнено',
+      }),
     director: Joi.string()
-    .required()
-    .messages({
-      'string.empty': 'Поле "director" должно быть заполнено',
-    }),
+      .required()
+      .messages({
+        'string.empty': 'Поле "director" должно быть заполнено',
+      }),
     duration: Joi.number()
-    .required()
-    .messages({
-      'string.empty': 'Поле "duration" должно быть заполнено',
-    }),
+      .required()
+      .messages({
+        'string.empty': 'Поле "duration" должно быть заполнено',
+      }),
     year: Joi.string()
-    .required()
-    .messages({
-      'string.empty': 'Поле "year" должно быть заполнено',
-    }),
+      .required()
+      .messages({
+        'string.empty': 'Поле "year" должно быть заполнено',
+      }),
     description: Joi.string()
-    .required()
-    .messages({
-      'string.empty': 'Поле "description" должно быть заполнено',
-    }),
+      .required()
+      .messages({
+        'string.empty': 'Поле "description" должно быть заполнено',
+      }),
     image: Joi.string()
-    .required()
-    .pattern(regex)
-    .message('Поле "image" должно быть валидным url-адресом')
-    .messages({
-      'string.empty': 'Поле "image" должно быть заполнено',
-    }),
+      .required()
+      .pattern(regex)
+      .message('Поле "image" должно быть валидным url-адресом')
+      .messages({
+        'string.empty': 'Поле "image" должно быть заполнено',
+      }),
     trailer: Joi.string()
-    .required()
-    .pattern(regex)
-    .message('Поле "trailer" должно быть валидным url-адресом')
-    .messages({
-      'string.empty': 'Поле "trailer" должно быть заполнено',
-    }),
+      .required()
+      .pattern(regex)
+      .message('Поле "trailer" должно быть валидным url-адресом')
+      .messages({
+        'string.empty': 'Поле "trailer" должно быть заполнено',
+      }),
     thumbnail: Joi.string()
-    .required()
-    .pattern(regex)
-    .message('Поле "thumbnail" должно быть валидным url-адресом')
-    .messages({
-      'string.empty': 'Поле "thumbnail" должно быть заполнено',
-    }),
+      .required()
+      .pattern(regex)
+      .message('Поле "thumbnail" должно быть валидным url-адресом')
+      .messages({
+        'string.empty': 'Поле "thumbnail" должно быть заполнено',
+      }),
     nameRU: Joi.string()
-    .required()
-    .messages({
-      'string.empty': 'Поле "nameRU" должно быть заполнено',
-    }),
+      .required()
+      .messages({
+        'string.empty': 'Поле "nameRU" должно быть заполнено',
+      }),
     nameEN: Joi.string()
-    .required()
-    .messages({
-      'string.empty': 'Поле "nameEN" должно быть заполнено',
-    }),
+      .required()
+      .messages({
+        'string.empty': 'Поле "nameEN" должно быть заполнено',
+      }),
   }),
 });
 
@@ -127,7 +127,7 @@ const validateUserInfo = celebrate({
         'string.min': 'Минимальная длина поля "name" - 2',
         'string.max': 'Максимальная длина поля "name" - 30',
       }),
-      email: Joi.string()
+    email: Joi.string()
       .email()
       .message('Поле "email" должно быть валидным email-адресом')
       .required()
