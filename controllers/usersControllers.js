@@ -1,4 +1,4 @@
-const { NODE_ENV, JWT_SECRET } = process.env;
+const { JWT_SECRET } = process.env;
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userSchema');
@@ -29,7 +29,9 @@ const updateUser = (req, res, next) => {
       res.send(user);
     })
     .catch((err) => {
-      if (err.name === 'ValidationError') {
+      if (err.code === 11000) {
+        next(new ConflictError('Пользователь с таким email уже существует'));
+      } else if (err.name === 'ValidationError') {
         next(new BadRequestError('Переданы некорректные данные'));
       } else if (err.name === 'CastError') {
         next(new BadRequestError('Некорректный id пользователя'));
@@ -84,7 +86,7 @@ const login = (req, res, next) => {
       if (!matched) {
         return Promise.reject(new AuthError('Неверные логин или пароль пользователя'));
       }
-      const token = jwt.sign({ _id: userId }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' }, { expiresIn: '7d' });
+      const token = jwt.sign({ _id: userId }, JWT_SECRET, { expiresIn: '7d' }, { expiresIn: '7d' });
       return res
         .send({ token });
     })

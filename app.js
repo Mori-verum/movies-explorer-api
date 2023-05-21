@@ -7,13 +7,8 @@ const cors = require('cors');
 const errorHandler = require('./middlewares/errorHandler');
 const routes = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { validateUserBody, validateLoginParameters } = require('./utils/validateRequestParameters');
-const {
-  createUser,
-  login,
-} = require('./controllers/usersControllers');
 
-const { PORT = 3000, DB_ADDRESS } = process.env;
+const { PORT, DB_ADDRESS } = require('./config');
 
 const app = express();
 app.use(cors());
@@ -22,9 +17,6 @@ mongoose.connect(DB_ADDRESS);
 app.use(bodyParser.json());
 
 app.use(requestLogger);
-
-app.post('/signup', validateUserBody, createUser);
-app.post('/signin', validateLoginParameters, login);
 
 app.use(routes);
 

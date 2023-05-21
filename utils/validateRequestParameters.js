@@ -92,6 +92,11 @@ const validateMovieBody = celebrate({
       .messages({
         'string.empty': 'Поле "thumbnail" должно быть заполнено',
       }),
+    movieId: Joi.number()
+      .required()
+      .messages({
+        'string.empty': 'Поле "movieId" должно быть заполнено',
+      }),
     nameRU: Joi.string()
       .required()
       .messages({
@@ -123,9 +128,11 @@ const validateUserInfo = celebrate({
     name: Joi.string()
       .min(2)
       .max(30)
+      .required()
       .messages({
         'string.min': 'Минимальная длина поля "name" - 2',
         'string.max': 'Максимальная длина поля "name" - 30',
+        'string.empty': 'Поле "name" должно быть заполнено',
       }),
     email: Joi.string()
       .email()
