@@ -86,7 +86,7 @@ const login = (req, res, next) => {
       if (!matched) {
         return Promise.reject(new AuthError('Неверные логин или пароль пользователя'));
       }
-      const token = jwt.sign({ _id: userId }, JWT_SECRET, { expiresIn: '7d' }, { expiresIn: '7d' });
+      const token = jwt.sign({ _id: userId }, JWT_SECRET, { expiresIn: '7d' });
       return res
         .send({ token });
     })
