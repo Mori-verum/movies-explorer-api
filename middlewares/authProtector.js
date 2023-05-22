@@ -1,8 +1,7 @@
-const { JWT_SECRET } = process.env;
 const jwt = require('jsonwebtoken');
+const { JWT_SECRET } = require('../config');
 const AuthError = require('../utils/errors/AuthError');
 
-// eslint-disable-next-line consistent-return
 const authProtector = (req, res, next) => {
   const { authorization } = req.headers;
 
@@ -21,7 +20,7 @@ const authProtector = (req, res, next) => {
 
   req.user = payload;
 
-  next();
+  return next();
 };
 
 module.exports = authProtector;
